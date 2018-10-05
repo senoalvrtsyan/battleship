@@ -3,6 +3,7 @@ import './style.css';
 import Hit from '../../assets/Hit.png';
 import Miss from '../../assets/Miss.png';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { handleBoardUnitClick } from '../../actions/board';
 import { addShipData } from '../../actions/ships';
 
@@ -28,7 +29,7 @@ class BattleshipBoardUnit extends Component {
     };
     render() {
         return (
-            <div className="battleshipBoardUnit"
+            <div className="battleship-board-unit"
                 onClick={this.handleClick}>
                 {
                     this.props.shipData && this.state.isClicked
@@ -50,5 +51,12 @@ const mapDispatchToProps = (dispatch) => ({
     handleClick: (coordinates) => handleBoardUnitClick(dispatch, coordinates),
     addShipCoordinates: (data) => addShipData(dispatch, data)
 });
+
+BattleshipBoardUnit.propTypes = {
+    shipData: PropTypes.object,
+    handleClick: PropTypes.func,
+    addShipCoordinates: PropTypes.func,
+    value: PropTypes.array
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(BattleshipBoardUnit);

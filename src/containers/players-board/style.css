@@ -1,6 +1,7 @@
 
-.players-board {
-    vertical-align: top;
-    display: inline-flex;
-    margin-right: 20px;
+
+@media (max-width: 980px) {
+    .players-board {
+        display: flex;
+    }
 }

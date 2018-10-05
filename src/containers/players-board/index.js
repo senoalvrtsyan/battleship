@@ -1,6 +1,7 @@
 
 import React, { PureComponent } from 'react';
 import PlayerBoard from '../../components/players-board-unit';
+import PropTypes from 'prop-types';
 import './style.css';
 import { connect } from 'react-redux';
 
@@ -20,5 +21,11 @@ class PlayersBoard extends PureComponent {
 const mapStateToProps = (state) => ({
     playerBoard: state.playerBoard
 });
+
+PlayersBoard.propTypes = {
+    player1: PropTypes.object,
+    player2: PropTypes.object,
+    playerBoard: PropTypes.object
+};
 
 export default connect(mapStateToProps)(PlayersBoard);

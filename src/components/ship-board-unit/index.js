@@ -10,6 +10,7 @@ import Miss from '../../assets/Miss small.png';
 import './style.css';
 import { addPlayerInfo } from '../../actions/players';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 class ShipBoardUnit extends PureComponent {
 
@@ -42,7 +43,7 @@ class ShipBoardUnit extends PureComponent {
     };
 
     getShipState = ({ size, isSunk }) => {
-        return [ ...Array(size) ].map((one, i) => {
+        return [ ...new Array(size) ].map((one, i) => {
             return isSunk
                 ? <img src={Hit} alt="" key={i}/>
                 : <img src={Miss} alt="" key={i}/>;
@@ -70,6 +71,13 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     addInfo: playerInfo => addPlayerInfo(dispatch, playerInfo)
 });
+
+ShipBoardUnit.propTypes = {
+    isSunk: PropTypes.bool,
+    addInfo: PropTypes.func,
+    playerBoard: PropTypes.object,
+    type: PropTypes.string
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShipBoardUnit);
 

@@ -4,6 +4,7 @@ import BattleshipBoardUnit from '../../components/battleship-board-unit';
 import { connect } from 'react-redux';
 import { generateBoard, addShipsToBoard } from '../../actions/board';
 import lodashIsEqual from 'lodash/isEqual';
+import PropTypes from 'prop-types';
 import './style.css';
 
 class BattleshipBoard extends PureComponent {
@@ -42,14 +43,14 @@ class BattleshipBoard extends PureComponent {
                     />
                 );
             }
-            verticalArray.push(<div key={i}>{arr}</div>);
+            verticalArray.push(<div key={i} className="battleship-board-column">{arr}</div>);
         }
         return verticalArray;
     };
 
     render() {
         return (
-            <div className="battleshipBoard">
+            <div className="battleship-board">
                 {
                     this.generateBoardUnits()
                 }
@@ -67,5 +68,12 @@ const mapDispatchToProps = (dispatch) => ({
     genBoard: (boardUnits) => generateBoard(dispatch, boardUnits),
     addShips: (ships) => addShipsToBoard(dispatch, ships)
 });
+
+BattleshipBoard.propTypes = {
+    genBoard: PropTypes.func,
+    addShips: PropTypes.func,
+    boardUnits: PropTypes.object,
+    ships: PropTypes.array
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(BattleshipBoard);

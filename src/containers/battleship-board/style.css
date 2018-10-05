@@ -1,7 +1,23 @@
 
-.battleshipBoard {
-    border: 5px solid orange;
-    flex-grow: 0;
+.battleship-board {
+    border: 5px solid #ffb000;
+    /*flex-grow: 0;*/
+    /*display: inline-flex;*/
+    /*flex-wrap: wrap;*/
+}
+
+.battleship-board .battleship-board-column {
     display: inline-flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+@media (max-width: 980px) {
+    .battleship-board {
+        margin-bottom: 15px;
+    }
+}
+@media (max-width: 605px) {
+    .battleship-board {
+        margin-bottom: 0;
+    }
 }

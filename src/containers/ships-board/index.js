@@ -2,6 +2,7 @@
 import React, { PureComponent } from 'react';
 import ShipBoardUnit from '../../components/ship-board-unit';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import './style.css';
 
 class ShipsBoard extends PureComponent {
@@ -9,7 +10,6 @@ class ShipsBoard extends PureComponent {
     generateShips = () => {
         const { shipTypes } = this.props;
         const array = [];
-        console.log(shipTypes);
         for (const key in shipTypes) {
             if (shipTypes.hasOwnProperty(key)) {
                 array.push(<ShipBoardUnit
@@ -36,5 +36,9 @@ class ShipsBoard extends PureComponent {
 const mapStateToProps = (state) => ({
     shipTypes: state.cloneShips,
 });
+
+ShipsBoard.propTypes = {
+    shipTypes: PropTypes.object
+};
 
 export default connect(mapStateToProps)(ShipsBoard);
