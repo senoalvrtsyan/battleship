@@ -1,0 +1,7 @@
+
+.battleshipBoard {
+    border: 5px solid orange;
+    flex-grow: 0;
+    display: inline-flex;
+    flex-wrap: wrap;
+}

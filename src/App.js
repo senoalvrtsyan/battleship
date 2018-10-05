@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
+import BattleshipBoard from 'containers/battleship-board/index';
 
 class App extends Component {
-  render() {
-    return (
-        <div>
-            <p>Battleship</p>
-        </div>
-    );
-  }
+    render() {
+        return (
+            <BattleshipBoard />
+        );
+    }
 }
 
 export default App;
