@@ -1,0 +1,14 @@
+
+.ship-board-unit {
+    display: flex;
+}
+
+.ship-board-unit img {
+    max-width: 100%;
+    padding: 10px 0;
+    width: auto;
+    height: 40px;
+}
+.ship-state img {
+    height: 20px;
+}

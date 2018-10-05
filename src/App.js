@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import BattleshipBoard from 'containers/battleship-board/index';
+import PlayersBoard from 'containers/players-board';
+import ShipsBoard from 'containers/ships-board';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducer from './reducers';
+import './style.css';
 
 const store = createStore(
     reducer,
@@ -13,7 +16,13 @@ class App extends Component {
     render() {
         return (
             <Provider store={store}>
-                <BattleshipBoard />
+                <div>
+                    <div className="left-board">
+                        <PlayersBoard />
+                        <ShipsBoard />
+                    </div>
+                    <BattleshipBoard />
+                </div>
             </Provider>
         );
     }

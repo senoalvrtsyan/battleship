@@ -6,3 +6,17 @@ export const generateShips = (dispatch, ships) => {
         payload: ships
     });
 };
+
+export const cloneShips = (dispatch, ships) => {
+    dispatch({
+        type: `CLONE_${suffix}`,
+        payload: ships
+    });
+};
+
+export const addShipData = (dispatch, shipData) => {
+    dispatch({
+        type: `ADD_${suffix}_DATA`,
+        payload: shipData
+    });
+};

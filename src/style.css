@@ -1,0 +1,7 @@
+
+.left-board {
+    vertical-align: top;
+    display: inline-flex;
+    text-align: center;
+    flex-direction: column;
+}

@@ -10,7 +10,8 @@ export const boardUnits = (state = initialState, action) => {
     } else if (action.type === `ADD_SHIPS_TO_${suffix}`) {
         const ships = { ...state };
         action.payload.forEach((unit) => {
-            ships[unit[0]][unit[1]].isShip = true;
+            ships[unit.cordX][unit.cordY].isShip = true;
+            ships[unit.cordX][unit.cordY].shipType = unit.type;
         });
         return ships;
     } else if (action.type === `CLICK_ON_${suffix}`) {

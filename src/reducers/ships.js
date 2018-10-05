@@ -1,4 +1,4 @@
-const initialState = {
+export const initialState = {
     shipTypes: {
         carrier: {size: 5, count: 1},
         battleship: {size: 4, count: 1},

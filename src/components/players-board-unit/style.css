@@ -1,0 +1,15 @@
+
+.player-board {
+    display: inline-flex;
+    flex-direction: column;
+    width: 100px;
+    text-align: center;
+}
+
+.green {
+    background-color: green;
+}
+
+.orange {
+    background-color: orange;
+}

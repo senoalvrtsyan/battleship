@@ -15,8 +15,7 @@ class BattleshipBoard extends PureComponent {
             obj[i] = {};
             for (let j = 0; j < row; j++) {
                 obj[i][j] = {
-                    isShip: false,
-                    isClicked: false,
+                    isShip: false
                 };
             }
         }
@@ -26,7 +25,7 @@ class BattleshipBoard extends PureComponent {
     componentWillReceiveProps(nextProps) {
         if (!lodashIsEqual(nextProps.boardUnits, this.props.boardUnits)) {
             nextProps.addShips(nextProps.ships.reduce((acc, ship) => {
-                return [ ...acc, ...ship.positions ];
+                return [ ...acc, ...ship.positions.map(item => ({ cordX: item[0], cordY: item[1], type: ship.ship })) ];
             }, []));
         }
     }
@@ -66,7 +65,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     genBoard: (boardUnits) => generateBoard(dispatch, boardUnits),
-    addShips: (ships) => addShipsToBoard(dispatch, ships),
+    addShips: (ships) => addShipsToBoard(dispatch, ships)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BattleshipBoard);
