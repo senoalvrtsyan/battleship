@@ -2,7 +2,7 @@
   "name": "battleship",
   "version": "0.1.0",
   "private": true,
-  "author": "Eduard Simonyan",
+  "author": "Senik Alvrtsyan",
   "dependencies": {
     "lodash": "^4.17.5",
     "md5": "^2.2.1",
