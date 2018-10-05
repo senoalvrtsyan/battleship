@@ -2,7 +2,8 @@
 import React, { PureComponent } from 'react';
 import BattleshipBoardUnit from '../../components/battleship-board-unit';
 import { connect } from 'react-redux';
-import { generateShips } from '../../actions/ships';
+import { generateBoard, addShipsToBoard } from '../../actions/board';
+import lodashIsEqual from 'lodash/isEqual';
 import './style.css';
 
 class BattleshipBoard extends PureComponent {
@@ -19,7 +20,15 @@ class BattleshipBoard extends PureComponent {
                 };
             }
         }
-        this.props.genShips(obj);
+        this.props.genBoard(obj);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (!lodashIsEqual(nextProps.boardUnits, this.props.boardUnits)) {
+            nextProps.addShips(nextProps.ships.reduce((acc, ship) => {
+                return [ ...acc, ...ship.positions ];
+            }, []));
+        }
     }
 
     generateBoardUnits = (row = 10, col = 10) => {
@@ -30,7 +39,7 @@ class BattleshipBoard extends PureComponent {
                 arr.push(
                     <BattleshipBoardUnit
                         key={`${i}${j}`}
-                        value={`${i},${j}`}
+                        value={[ i, j ]}
                     />
                 );
             }
@@ -40,7 +49,6 @@ class BattleshipBoard extends PureComponent {
     };
 
     render() {
-        console.log(this.props);
         return (
             <div className="battleshipBoard">
                 {
@@ -52,11 +60,13 @@ class BattleshipBoard extends PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-    ships: state.ships,
+    boardUnits: state.boardUnits,
+    ships: state.ships.layout
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    genShips: (ships) => generateShips(dispatch, ships),
+    genBoard: (boardUnits) => generateBoard(dispatch, boardUnits),
+    addShips: (ships) => addShipsToBoard(dispatch, ships),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BattleshipBoard);
